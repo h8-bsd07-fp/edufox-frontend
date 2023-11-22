@@ -17,7 +17,15 @@
         <template #action>
           <div class="py-3 px-6">
             <RouterLink :to="`/enrollments/${enrollment.Course.id}/${enrollment.curChapterId}`">
-              <CustBtn> {{ isFinished(enrollment) ? 'Review' : 'Continue This Lesson' }} </CustBtn>
+              <CustBtn>
+                {{
+                  enrollment.status === 'created'
+                    ? 'Start Learning'
+                    : isFinished(enrollment)
+                      ? 'Review'
+                      : 'Continue This Lesson'
+                }}
+              </CustBtn>
             </RouterLink>
           </div>
         </template>
