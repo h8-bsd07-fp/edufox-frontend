@@ -2,7 +2,7 @@
   <div>
     <NavBar />
     <RouterView />
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 

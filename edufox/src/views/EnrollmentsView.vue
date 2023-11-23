@@ -1,6 +1,7 @@
 <template>
   <div class="max-w-4xl items-center mx-auto flex flex-col gap-3">
-    <div class="flex flex-wrap gap-3 justify-center">
+    <div class="flex flex-wrap gap-3 justify-center" id="bd">
+      <!-- <NotEnroll /> -->
       <CardHome v-for="(enrollment, i) in enrollments" :key="i" :course="enrollment.Course">
         <template #additional>
           <div class="pt-3 flex flex-col gap-1">
@@ -23,11 +24,18 @@
   </div>
 </template>
 
+<style>
+#bd {
+  border: 0px solid;
+}
+</style>
+
 <script>
 import client from '../api/config'
 import CardHome from '../components/CardHome.vue'
 import ListPagination from '../components/ListPagination.vue'
 import CustBtn from '../components/CustBtn.vue'
+import NotEnroll from '../components/NotEnroll.vue'
 
 export default {
   name: 'EnrollmentsView',
@@ -42,8 +50,9 @@ export default {
   components: {
     CardHome,
     ListPagination,
-    CustBtn
-  },
+    CustBtn,
+    NotEnroll
+},
   methods: {
     getEnrollments() {
       const query = new URLSearchParams(this.query).toString()
